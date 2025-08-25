@@ -667,7 +667,7 @@ body {
 
 /* Cada tarjeta del carrusel */
 .carousel-item {
-    min-width: calc(100% / 3);
+    flex: 0 0 calc(100% / 3);
     box-sizing: border-box;
     height: 300px;
     border-radius: 0;
@@ -728,7 +728,7 @@ body {
         width: max-content;
     }
     .carousel-item {
-        min-width: 33.333%;
+        flex: 0 0 33.333%;
         height: 320px;
         box-sizing: border-box;
     }
@@ -741,7 +741,7 @@ body {
         gap: 0.5rem;
     }
     .carousel-item {
-        min-width: 100%;
+        flex: 0 0 100%;
         height: auto;
         box-sizing: border-box;
     }

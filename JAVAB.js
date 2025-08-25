@@ -262,37 +262,30 @@ function initializeCarousel() {
 function updateCarousel() {
     const track = document.getElementById('carouselTrack');
     if (track) {
-        const firstItem = track.querySelector('.carousel-item');
-        if (!firstItem) return;
+        const items = track.querySelectorAll('.carousel-item');
+        if (!items.length) return;
         const container = track.parentElement;
-        const itemWidth = firstItem.getBoundingClientRect().width;
+
+        // Temporarily reset transform to measure actual positions
+        const previousTransform = track.style.transform;
+        track.style.transform = 'none';
+
+        const firstRect = items[0].getBoundingClientRect();
+        const secondRect = items[1] ? items[1].getBoundingClientRect() : null;
+        const stepWidth = secondRect ? (secondRect.left - firstRect.left) : firstRect.width;
+
         const containerWidth = container.getBoundingClientRect().width;
-
-        // Convert CSS length (px/rem) to numeric pixels
-        const toPx = (value) => {
-            if (!value || typeof value !== 'string') return 0;
-            const trimmed = value.trim();
-            if (trimmed.endsWith('px')) return parseFloat(trimmed) || 0;
-            if (trimmed.endsWith('rem')) {
-                const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
-                return (parseFloat(trimmed) || 0) * rootFontSize;
-            }
-            const n = parseFloat(trimmed);
-            return isNaN(n) ? 0 : n;
-        };
-
-        const styles = getComputedStyle(track);
-        const gapPx = toPx(styles.columnGap || styles.gap || '0px');
-        const paddingLeftPx = toPx(styles.paddingLeft || '0px');
-
-        // Estimate how many items fit in view, considering gap between items
-        const visibleCount = Math.max(1, Math.floor((containerWidth + gapPx) / (itemWidth + gapPx)));
+        const visibleCount = Math.max(1, Math.round(containerWidth / stepWidth));
         const maxIndex = Math.max(0, totalSlides - visibleCount);
         if (currentSlide > maxIndex) currentSlide = maxIndex;
 
-        const translateXpx = -((currentSlide * (itemWidth + gapPx)) + paddingLeftPx);
+        const trackRect = track.getBoundingClientRect();
+        const baseLeft = firstRect.left - trackRect.left;
+        const translateXpx = -Math.round(baseLeft + (currentSlide * stepWidth));
+
+        // Apply transform
         track.style.transform = `translateX(${translateXpx}px)`;
-        console.log('Carousel moved to slide:', { currentSlide, visibleCount, maxIndex, translateXpx, gapPx, paddingLeftPx });
+        console.log('Carousel moved to slide:', { currentSlide, visibleCount, maxIndex, translateXpx, stepWidth, baseLeft });
     }
     updateSlideCounter();
     markCenterCarouselItem();

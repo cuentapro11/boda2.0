@@ -20,7 +20,7 @@
             width: max-content;
         }
         .carousel-item {
-            min-width: calc(100% / 3);
+            flex: 0 0 calc(100% / 3);
             box-sizing: border-box;
             display: flex;
             justify-content: center;
@@ -50,7 +50,7 @@
             }
             
             .carousel-item {
-                min-width: 100% !important; /* 1 imagen por vista en móvil */
+                flex: 0 0 100% !important; /* 1 imagen por vista en móvil */
                 padding: 0 8px !important;
                 height: 300px !important;
                 display: flex !important;
@@ -75,7 +75,7 @@
             }
             
             .carousel-item {
-                min-width: 100% !important;
+                flex: 0 0 100% !important;
                 padding: 0 8px !important;
                 height: auto !important;
             }
