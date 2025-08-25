@@ -262,15 +262,32 @@ function updateCarousel() {
         const container = track.parentElement;
         const itemWidth = firstItem.getBoundingClientRect().width;
         const containerWidth = container.getBoundingClientRect().width;
-        const visibleCount = Math.max(1, Math.floor(containerWidth / itemWidth));
+
+        // Convert CSS length (px/rem) to numeric pixels
+        const toPx = (value) => {
+            if (!value || typeof value !== 'string') return 0;
+            const trimmed = value.trim();
+            if (trimmed.endsWith('px')) return parseFloat(trimmed) || 0;
+            if (trimmed.endsWith('rem')) {
+                const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+                return (parseFloat(trimmed) || 0) * rootFontSize;
+            }
+            const n = parseFloat(trimmed);
+            return isNaN(n) ? 0 : n;
+        };
+
+        const styles = getComputedStyle(track);
+        const gapPx = toPx(styles.columnGap || styles.gap || '0px');
+        const paddingLeftPx = toPx(styles.paddingLeft || '0px');
+
+        // Estimate how many items fit in view, considering gap between items
+        const visibleCount = Math.max(1, Math.floor((containerWidth + gapPx) / (itemWidth + gapPx)));
         const maxIndex = Math.max(0, totalSlides - visibleCount);
         if (currentSlide > maxIndex) currentSlide = maxIndex;
 
-        const styles = getComputedStyle(track);
-const gap = parseFloat(styles.columnGap || styles.gap || 0) || 0;
-const translateXpx = -(currentSlide * (itemWidth + gap));
+        const translateXpx = -((currentSlide * (itemWidth + gapPx)) + paddingLeftPx);
         track.style.transform = `translateX(${translateXpx}px)`;
-        console.log('Carousel moved to slide:', { currentSlide, visibleCount, maxIndex, translateXpx });
+        console.log('Carousel moved to slide:', { currentSlide, visibleCount, maxIndex, translateXpx, gapPx, paddingLeftPx });
     }
     updateSlideCounter();
     markCenterCarouselItem();
