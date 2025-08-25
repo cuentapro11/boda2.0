@@ -670,7 +670,7 @@ body {
 .carousel-item {
     flex: 0 0 calc(100% / 3);
     box-sizing: border-box;
-    height: 300px;
+    height: 380px;
     border-radius: 0;
     overflow: hidden;
 }
@@ -730,7 +730,7 @@ body {
     }
     .carousel-item {
         flex: 0 0 33.333%;
-        height: 320px;
+        height: 340px;
         box-sizing: border-box;
     }
 }
@@ -750,7 +750,7 @@ body {
         box-shadow: none;
         transform: none;
         height: auto;
-        max-height: 320px;
+        max-height: 360px;
     }
 
     .carousel-btn {
@@ -1257,8 +1257,8 @@ button[class*="carousel"] {
 @media (min-width: 769px) {
     .carousel-item.is-center { z-index: 2; }
     .carousel-item.is-center .framed-photo {
-        transform: scale(1.08) rotate(-0.5deg);
-        box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+        transform: scale(1.08) rotate(-0.25deg);
+        box-shadow: 0 28px 56px rgba(0,0,0,0.32);
     }
 }
 
