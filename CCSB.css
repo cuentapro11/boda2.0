@@ -743,14 +743,14 @@ body {
     }
     .carousel-item {
         flex: 0 0 100%;
-        height: auto;
+        height: 320px;
         box-sizing: border-box;
     }
     .carousel-item img {
         box-shadow: none;
         transform: none;
-        height: auto;
-        max-height: 360px;
+        height: 100%;
+        max-height: 320px;
     }
 
     .carousel-btn {
@@ -1255,6 +1255,12 @@ button[class*="carousel"] {
 
 /* Efecto “sobresalir” del centro solo en desktop */
 @media (min-width: 769px) {
+    /* Hacer las fotos ligeramente más estrechas en desktop manteniendo 3 por vista */
+    .carousel-item .framed-photo {
+        width: 92%;
+        height: 100%;
+        margin: 0 auto;
+    }
     .carousel-item.is-center { z-index: 2; }
     .carousel-item.is-center .framed-photo {
         transform: scale(1.08) rotate(-0.25deg);
