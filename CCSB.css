@@ -735,7 +735,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .carousel-track {
         width: max-content;
         padding: 0; /* quita posibles líneas por padding */
