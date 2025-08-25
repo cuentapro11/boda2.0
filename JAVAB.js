@@ -272,15 +272,15 @@ function updateCarousel() {
 
         const firstRect = items[0].getBoundingClientRect();
         const secondRect = items[1] ? items[1].getBoundingClientRect() : null;
-        const stepWidth = secondRect ? (secondRect.left - firstRect.left) : firstRect.width;
+        const stepWidth = secondRect ? Math.round(secondRect.left - firstRect.left) : Math.round(firstRect.width);
 
-        const containerWidth = container.getBoundingClientRect().width;
-        const visibleCount = Math.max(1, Math.round(containerWidth / stepWidth));
+        const containerWidth = Math.round(container.getBoundingClientRect().width);
+        const visibleCount = Math.max(1, Math.floor((containerWidth + 1) / stepWidth));
         const maxIndex = Math.max(0, totalSlides - visibleCount);
         if (currentSlide > maxIndex) currentSlide = maxIndex;
 
         const trackRect = track.getBoundingClientRect();
-        const baseLeft = firstRect.left - trackRect.left;
+        const baseLeft = Math.round(firstRect.left - trackRect.left);
         const translateXpx = -Math.round(baseLeft + (currentSlide * stepWidth));
 
         // Apply transform
