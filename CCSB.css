@@ -616,7 +616,7 @@ body {
     object-fit: cover;
     box-sizing: border-box;
     background: #fff;
-    border: 10px solid #d9d9d9; /* gris claro para que se vea el borde */
+    border: 10px solid #d3d3d3; /* gris de la web */
     border-bottom-width: 38px; /* pie polaroid */
     border-radius: 4px;
     box-shadow: 0 10px 24px rgba(0,0,0,0.25);
