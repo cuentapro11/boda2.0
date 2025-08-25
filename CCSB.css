@@ -30,6 +30,7 @@ html, body {
 }
 
 /* Eliminar bordes en móviles */
+/* build:force-redeploy 2025-08-25 */
 @media (max-width: 768px) {
     html, body {
         margin: 0;
