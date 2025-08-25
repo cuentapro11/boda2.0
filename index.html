@@ -45,24 +45,28 @@
             }
         }
         
-        /* Mobile: mantener 3 imágenes visibles y fotos más estrechas */
+        /* Mobile responsive styles for well-proportioned images */
         @media (max-width: 768px) {
+            .carousel-item img {
+                max-height: 320px !important;
+                height: 280px !important;
+                width: auto !important;
+                max-width: 95% !important;
+                object-fit: cover !important;
+                border-radius: 0;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                transform: scale(1.1) !important;
+            }
+            
             .carousel-item {
-                flex: 0 0 33.333% !important; /* 3 imágenes por vista en móvil */
-                padding: 0 6px !important;
-                height: 240px !important;
+                flex: 0 0 100% !important; /* 1 imagen por vista en móvil */
+                padding: 0 8px !important;
+                height: 300px !important;
                 display: flex !important;
                 justify-content: center !important;
                 align-items: center !important;
             }
-            .carousel-item img {
-                width: 100% !important;
-                height: 100% !important;
-                max-height: 240px !important;
-                object-fit: cover !important;
-                transform: none !important;
-                box-shadow: none !important;
-            }
+            
             .carousel-track-container {
                 height: auto !important;
             }
