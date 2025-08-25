@@ -669,7 +669,7 @@ body {
 .carousel-item {
     flex: 0 0 calc(100% / 3);
     box-sizing: border-box;
-    height: 300px;
+    height: 380px;
     border-radius: 0;
     overflow: hidden;
 }
@@ -729,7 +729,7 @@ body {
     }
     .carousel-item {
         flex: 0 0 33.333%;
-        height: 320px;
+        height: 360px;
         box-sizing: border-box;
     }
 }
