@@ -21,22 +21,28 @@
             overflow: visible;
         }
         .carousel-item {
-            flex: 0 0 calc(33.333% - 1rem); /* 3 imágenes */
+            flex: 0 0 33.333%; /* 3 imágenes por fila en PC */
             box-sizing: border-box;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0 8px;
+            padding: 0; /* usamos gap del track para separación */
         }
         .carousel-item img {
-            max-width: 92%;
-            height: 100% !important;   /* llena los 380px del contenedor */
-            max-height: none !important;
+            max-width: 100%;
+            height: 100% !important;
             object-fit: cover;
             border-radius: 0;
             box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-            transform: scale(1.01);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        /* Hacer las fotos visualmente menos anchas manteniendo 3 por fila */
+        .framed-photo {
+            width: 90% !important;
+            height: 100% !important;
+            margin: 0 auto;
+            object-fit: cover !important;
         }
 
         @media (min-width: 769px) {
