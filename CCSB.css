@@ -663,6 +663,7 @@ body {
     gap: 1rem;
     padding: 1rem;
     width: max-content;
+    overflow: visible; /* evita recorte y huecos al deslizar */
 }
 
 /* Cada tarjeta del carrusel */
@@ -1242,7 +1243,7 @@ button[class*="carousel"] {
 
 /* Permitir que las sombras no se recorten en el carrusel */
 .carousel-track-container { overflow: hidden; }
-.carousel-track { overflow: hidden; }
+.carousel-track { overflow: visible; }
 
 @media (max-width: 768px) {
     .framed-photo { margin: 16px auto 24px; max-width: calc(100% - 32px); }
