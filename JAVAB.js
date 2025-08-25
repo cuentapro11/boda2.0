@@ -247,6 +247,11 @@ function initializeCarousel() {
         });
     }
 
+    // Ajuste inicial para asegurar cálculo correcto tras el render
+    updateCarousel();
+    requestAnimationFrame(updateCarousel);
+    setTimeout(updateCarousel, 200);
+
     // Auto-play del carrusel
     setInterval(() => {
         currentSlide = (currentSlide + 1) % totalSlides;
