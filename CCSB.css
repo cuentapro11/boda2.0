@@ -617,7 +617,7 @@ html { background-color: #8B5E3C; }
     height: 100%;
     object-fit: cover;
     box-sizing: border-box;
-    background: #fff;
+    background: #8B5E3C;
     border: 10px solid #1F1F1F; /* gris oscuro solicitado */
     border-bottom-width: 38px; /* pie polaroid */
     border-radius: 4px;
